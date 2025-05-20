@@ -76,7 +76,8 @@ def _clean_sample(sample, tokenizer):
                     text=old_text,
                     token=old_token_ids.cpu(),
                     )
-    ret = {k: sample[k] for k in ['prompt', 'id', 'question', 'answer', 'additional_answers']}
+    # ret = {k: sample[k] for k in ['prompt', 'id', 'question', 'answer', 'additional_answers']}
+    ret = {k: sample[k] for k in ['prompt', 'id', 'question', 'answer']}
     ret['generations'] = [None] * len(sample['generations'])
     if tokenizer is None:
         for i, generation in enumerate(sample['generations']):
@@ -353,7 +354,8 @@ def _get_rouge_sample(row, text_key=None):
 
 def _get_rouge_parallel(samples, clean:bool, logger=None):
     text_key = 'text_cleaned' if clean else 'text'
-    df = pd.DataFrame({key: [sample[key] for sample in samples] for key in ['id', 'answer', 'additional_answers']})
+    # df = pd.DataFrame({key: [sample[key] for sample in samples] for key in ['id', 'answer', 'additional_answers']})
+    df = pd.DataFrame({key: [sample[key] for sample in samples] for key in ['id', 'answer']})
     df['text_key'] = text_key
     df['generations'] = [sample['generations'][text_key] for sample in samples]
     ret = df.parallel_apply(_get_rouge_sample, axis=1)
