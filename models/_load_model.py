@@ -43,5 +43,6 @@ def _load_pretrained_tokenizer(model_name, use_fast=False):
         tokenizer.pad_token_id = tokenizer.eos_token_id
         tokenizer.pad_token = tokenizer.eos_token
     elif model_name == 'Qwen/Qwen2.5-3B-Instruct':
-        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, use_fast=use_fast)
+        # tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, use_fast=use_fast)
+        return None
     return tokenizer
