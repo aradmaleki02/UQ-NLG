@@ -15,11 +15,12 @@ DEFAULT_DEVICE = 'cuda:7'
 IGNORE_INDEX = -100
 
 def _get_model_name(path:str):
-    base_fnames = os.path.basename(path).split("_")
-    if base_fnames[-1] == 'generations.pkl':
-        return base_fnames[0]
-    else:
-        return os.path.basename(os.path.dirname(path)).split("_")[0]
+    return 'Qwen/Qwen2.5-3B-Instruct'
+    # base_fnames = os.path.basename(path).split("_")
+    # if base_fnames[-1] == 'generations.pkl':
+    #     return base_fnames[0]
+    # else:
+    #     return os.path.basename(os.path.dirname(path)).split("_")[0]
 
 def get_key_from_generated_strings_path_new(path):
     run_id = os.path.basename(path).replace(".pkl", "")
