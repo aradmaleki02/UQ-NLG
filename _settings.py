@@ -8,8 +8,8 @@ _BASE_DIR = os.getcwd()  # Use current working directory instead of hardcoded pa
 
 LLAMA_PATH = f'{_BASE_DIR}/LLM_weights/'
 
-DATA_FOLDER = os.path.join(_BASE_DIR, 'NLGUQ')
-GENERATION_FOLDER = os.path.join(DATA_FOLDER, 'output')
+DATA_FOLDER = '.'
+GENERATION_FOLDER = '.'
 os.makedirs(GENERATION_FOLDER, exist_ok=True)
 
 # After running pipeline/generate.py, update the following paths to the generated files if necessary.
