@@ -4,7 +4,7 @@ import sys
 
 __USERNAME = getpass.getuser()
 
-_BASE_DIR = f'/srv/local/data/{__USERNAME}/'
+_BASE_DIR = os.getcwd()  # Use current working directory instead of hardcoded path
 
 LLAMA_PATH = f'{_BASE_DIR}/LLM_weights/'
 
