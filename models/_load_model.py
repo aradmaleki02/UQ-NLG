@@ -20,6 +20,8 @@ def _load_pretrained_model(model_name, device, torch_dtype=torch.float16):
         model = AutoModelForCausalLM.from_pretrained(os.path.join(LLAMA_PATH, model_name), cache_dir=None, torch_dtype=torch_dtype)
     elif model_name == 'roberta-large-mnli':
          model = AutoModelForSequenceClassification.from_pretrained("roberta-large-mnli")#, torch_dtype=torch_dtype)
+    elif model_name == 'Qwen/Qwen2.5-3B-Instruct':
+        model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True, torch_dtype=torch_dtype)
     model.to(device)
     return model
 
@@ -40,4 +42,6 @@ def _load_pretrained_tokenizer(model_name, use_fast=False):
         tokenizer.bos_token = tokenizer.decode(tokenizer.bos_token_id)
         tokenizer.pad_token_id = tokenizer.eos_token_id
         tokenizer.pad_token = tokenizer.eos_token
+    elif model_name == 'Qwen/Qwen2.5-3B-Instruct':
+        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, use_fast=use_fast)
     return tokenizer
