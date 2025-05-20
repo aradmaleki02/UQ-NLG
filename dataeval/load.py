@@ -10,7 +10,7 @@ import models
 import models.nli as sc
 import utils
 
-DEFAULT_DEVICE = 'cuda:7'
+DEFAULT_DEVICE = 'cuda'
 
 IGNORE_INDEX = -100
 

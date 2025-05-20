@@ -22,6 +22,7 @@ def _load_pretrained_model(model_name, device, torch_dtype=torch.float16):
          model = AutoModelForSequenceClassification.from_pretrained("roberta-large-mnli")#, torch_dtype=torch_dtype)
     elif model_name == 'Qwen/Qwen2.5-3B-Instruct':
         model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True, torch_dtype=torch_dtype)
+    print("model name: ", model_name)
     model.to(device)
     return model
 

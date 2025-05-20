@@ -16,7 +16,7 @@ import pipeline.clustering as pc
 import pipeline.eval_uq as eval_uq
 
 CONTRADICT, NEUTRAL, AGREE = 0, 1, 2
-DEVICE = 'cuda:0'
+DEVICE = 'cuda'
 
 def _clean_path(path):
     base_dir = os.path.normpath(_settings.GENERATION_FOLDER)
