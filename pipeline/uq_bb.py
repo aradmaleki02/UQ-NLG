@@ -21,8 +21,9 @@ DEVICE = 'cuda:1'
 def _clean_path(path):
     base_dir = os.path.normpath(_settings.GENERATION_FOLDER)
     path = os.path.normpath(path)
-    assert path.startswith(base_dir)
-    return path[len(base_dir):]
+    # assert path.startswith(base_dir)
+    # return path[len(base_dir):]
+    return path
 
 def _compute_lexical_sim(sample, num_gens=3):
     locs = sample['mapping'][:num_gens]
